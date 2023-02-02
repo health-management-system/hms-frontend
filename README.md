@@ -87,3 +87,22 @@ This should contain any other helpers like api requests, calculations, validatio
 
 ### 6. /src/assets/
 This folder can contain pictures for the app
+
+## Cypress Testing Documentation
+
+For more info see the cypress documentation ([Click Here](https://docs.cypress.io/guides/component-testing/react/quickstart))
+
+### Component Testing:
+The component tests (*.cy.jsx) will be contained in the `component_specs` folder.
+##### Sample Tests:
+There is a sample react component in `src/components/` called `sample.jsx` and its respective component tests can be found in the `component_specs/sample.cy.jsx` file.
+
+##### Steps to run tests:
+1. In the terminal run `npx cypress open`.
+2. A Cypress window should open showing, select the component testing option (this should be configured)
+3. Next select a browser (pick a browser you have already installed) and click the "start component testing in ..." button.
+4. Now in your selected browser you can select the component spec you would like to view.
+5. At this point you should be able to see the component tests.
+
+### End-2-End Testing:
+To be added later
