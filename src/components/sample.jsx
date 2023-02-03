@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Stepper({ initial = 0, onChange = () => {} }) {
+export default function Stepper({ initial = 1, onChange = () => {} }) {
   const [count, setCount] = useState(initial)
 
   const handleIncrement = () => {
