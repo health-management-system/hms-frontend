@@ -1,12 +1,30 @@
+import { useState } from 'react'
 import './add_record_panel.css'
 
-export default function AddRecordPanel (patientList) {
+export default function AddRecordPanel ({patientList = []}) {
+    const [patients, setPatients] = useState(patientList)
 
     const addPatients = () => {
-        for (var i=0; i<patientList.length; i++) {
-            let newOption = new Option(patientList[i], patientList[i])
-            document.getElementsByID('patient-select').add(newOption)
+        const patient_options = document.querySelector('select')
+        for (var i=0; i<patients.length; i++) {
+            let newOption = new Option(patients[i], patients[i])
+            patient_options.add(newOption,undefined)
         }
+        console.log('Patients added')
+    }
+
+
+    const postRecord = () => {
+        let record = {
+            patient: document.getElementById('patient-select').value,
+            subject: document.getElementById('subject-input').value,
+            log: document.getElementById('log-input').value
+        }
+        console.log('Record to be posted:')
+        console.log(record)
+        document.getElementById('patient-select').value = "default"
+        document.getElementById('subject-input').value = ""
+        document.getElementById('log-input').value = ""
     }
 
     return (
@@ -15,7 +33,16 @@ export default function AddRecordPanel (patientList) {
                 <form>
                     <div className="form-div">
                         <label className='input-label'>Patient</label>
-                        <select id='patient-select'></select>
+                        <select id='patient-select' defaultValue={'default'}>
+                            <option disabled label='Choose a patient' value='default'></option>
+                            {patients.map((option) => {
+                                return (
+                                    <option key={patients.key} value={patients.value}>
+                                        {option.key}
+                                    </option>
+                                )
+                            })};
+                        </select>
                     </div>
                     <div className="form-div">
                         <label className='input-label'>Subject</label>
@@ -23,11 +50,11 @@ export default function AddRecordPanel (patientList) {
                     </div>
                     <div className="form-div">
                         <label className='input-label'>Log</label>
-                        <input type='text' id='log-input'></input>
+                        <textarea type='text' id='log-input'></textarea>
                     </div>
                 </form>
                 <div id='button-div'>
-                    <button>Post</button>
+                    <button onClick={postRecord}>Post</button>
                 </div>
             </div>
         </div>
