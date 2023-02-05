@@ -4,16 +4,6 @@ import './add_record_panel.css'
 export default function AddRecordPanel ({patientList = []}) {
     const [patients, setPatients] = useState(patientList)
 
-    const addPatients = () => {
-        const patient_options = document.querySelector('select')
-        for (var i=0; i<patients.length; i++) {
-            let newOption = new Option(patients[i], patients[i])
-            patient_options.add(newOption,undefined)
-        }
-        console.log('Patients added')
-    }
-
-
     const postRecord = () => {
         let record = {
             patient: document.getElementById('patient-select').value,
@@ -32,9 +22,9 @@ export default function AddRecordPanel ({patientList = []}) {
             <div id='inner-box'>
                 <form>
                     <div className="form-div">
-                        <label className='input-label'>Patient</label>
+                        <label id='patient-label'>Patient</label>
                         <select id='patient-select' defaultValue={'default'}>
-                            <option disabled label='Choose a patient' value='default'></option>
+                            <option  disabled label='Choose a patient' value='default'></option>
                             {patients.map((option) => {
                                 return (
                                     <option key={patients.key} value={patients.value}>
@@ -45,11 +35,11 @@ export default function AddRecordPanel ({patientList = []}) {
                         </select>
                     </div>
                     <div className="form-div">
-                        <label className='input-label'>Subject</label>
+                        <label id='subject-label'>Subject</label>
                         <input type='text' id='subject-input'></input>
                     </div>
                     <div className="form-div">
-                        <label className='input-label'>Log</label>
+                        <label id='log-label'>Log</label>
                         <textarea type='text' id='log-input'></textarea>
                     </div>
                 </form>
