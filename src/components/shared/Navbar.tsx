@@ -1,28 +1,32 @@
-import React from "react"
+import React,{ useState } from "react"
 import "./Navbar.css"
 
-export class NavBar extends React.Component{
-    render(){
-        
+function NavBar (){
+    const [active,setActive] = useState("nav__menu");
+    const navToggle= () => {
+    active === "nav__menu" ? setActive("nav__menu nav__active") : setActive("nav__menu");
+    };
         return(
-                <nav className="Nav">
-                    <div className="nav__toggler">
-                        <div className="#"></div>
-                        <div className="#"></div>
-                        <div className="#"></div>
-                    </div>
+                <nav  className="Nav">
                     
-                    <ul className="nav__menu" >
+                    <a href="#" className="nav__brand" >Logo</a> 
+                    
+                    <ul className={active}>
                         <li className="#nav_item"><a href="" className="nav_link">Home</a></li>
                         <li className="#nav_item"><a href="" className="nav_link">History</a></li>
                         <li className="#nav_item"><a href="" className="nav_link">Appointments</a></li>
                         <li className="#nav_item"><a href="" className="nav_link">Settings</a></li>
                         <li className="#nav_item"><a href="" className="nav_link">Contact Us</a> </li>
                     </ul>
-
-                    <a href="#" className="nav__brand" >Logo</a>
+                    <div onClick={navToggle} className="nav__toggler">
+                        <div className="#"></div>
+                        <div className="#"></div>
+                        <div className="#"></div>
+                    </div>
+                   
                 
                 </nav>
         )
-    }
 }
+
+export default  NavBar

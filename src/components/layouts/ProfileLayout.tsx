@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar } from '../shared/Navbar'
+import NavBar from '../shared/Navbar'
 
 function ProfileLayout({children}: {children: React.ReactNode}) {
   return (

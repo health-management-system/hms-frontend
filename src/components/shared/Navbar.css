@@ -61,13 +61,17 @@ a{
     .nav__menu{
         position: fixed;
         top: 8vh;
-        left: 0;
+        right: 0;
         width: 50%;
         height: 92vh;
         background-color: #EDE7DC;
         flex-direction: column;
-        transform: traslateX(100%);
+        transform: translateX(100%);
         justify-content: start;
         padding-top: 10px;
     }
+}
+
+.nav__active{
+    transform: translateX(0);
 }
